@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
+export const Login = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const existDialog = useRef()
@@ -20,7 +20,7 @@ const Login = () => {
             .then(authInfo => {
                 if (authInfo.valid) {
                     localStorage.setItem("pawfect_token", JSON.stringify(authInfo))
-                    navigate("/")
+                    navigate("/pets")
                 } else {
                     existDialog.current.showModal()
                 }
@@ -71,5 +71,3 @@ const Login = () => {
         </main>
     )
 }
-
-export default Login;

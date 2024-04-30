@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom"
-import { Navbar } from "../components/navbar"
+import { Navbar } from "../components/Navbar"
 
 export const Authorized = () => {
   if (localStorage.getItem("pawfect_token")) {
@@ -12,3 +12,5 @@ export const Authorized = () => {
   }
   return <Navigate to='/login' replace />
 }
+
+// export default Authorized;
