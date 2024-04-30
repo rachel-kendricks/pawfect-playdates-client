@@ -10,5 +10,3 @@ export const MyPetProfiles = () => {
         </section>
     )
 }
-
-// export default MyPetProfiles;
