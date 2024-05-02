@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import "./PetCard.css"
 
 export const PetCard = ({ pet }) => {

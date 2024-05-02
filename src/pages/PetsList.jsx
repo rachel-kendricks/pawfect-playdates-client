@@ -22,8 +22,10 @@ export const PetsList = () => {
             <div className="content">
                 {allPets.map((pet) => (
                     // <div key={pet.id}>{pet.name}</div>
-                    <div key={pet.id}>
-                    <PetCard pet={pet} key={pet.id}/>
+                   <div key={pet.id}>
+                    <Link to={`/pets/${pet.id}`}>
+                        <PetCard pet={pet} key={pet.id}/>
+                    </Link>
                      </div>
                 ))}
             </div>
