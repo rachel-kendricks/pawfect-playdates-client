@@ -1,7 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { deletePet } from "../services/pets"
 
 
 export const PetDetailsCard = ({ pet, petId }) => {
+    const navigate = useNavigate()
+    
+    const handleDelete = () => {
+        deletePet(petId).then(navigate("/mypetprofiles"))
+    }
+
     return(
         <section>
             <h1>{pet.name}</h1>
@@ -16,6 +23,7 @@ export const PetDetailsCard = ({ pet, petId }) => {
             <Link to="./edit">
                 <button>Edit</button>
             </Link>
+            <button onClick={() => handleDelete()}>Delete</button>
         </section>
     )
 }

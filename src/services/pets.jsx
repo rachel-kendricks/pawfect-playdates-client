@@ -68,13 +68,45 @@ export const addPet = (pet) => {
     }
 }
 
-// export function addProduct(product) {
-//     return fetchWithResponse(`products`, {
-//       method: "POST",
-//       headers: {
-//         Authorization: `Token ${localStorage.getItem("token")}`,
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(product),
-//     })
-//   }
+//Delete single pet
+export const deletePet = (petId) => {
+    const pawfectTokenString = localStorage.getItem("pawfect_token");
+    if (pawfectTokenString) {
+        const pawfectToken = JSON.parse(pawfectTokenString);
+    return fetchWithoutResponse(`pets/${petId}`, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Token ${pawfectToken.token}`,
+        }
+    })
+    }
+}
+
+//Update a pet's details
+export const updatePet = (petId, pet) => {
+    const pawfectTokenString = localStorage.getItem("pawfect_token");
+    if (pawfectTokenString) {
+        const pawfectToken = JSON.parse(pawfectTokenString);
+    return fetchWithoutResponse(`pets/${petId}`, {
+        method: "PUT",
+        headers: {
+            Authorization: `Token ${pawfectToken.token}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(pet),
+    })
+    }
+}
+
+//Get a user's favorites
+export const getUserFavorites = () => {
+    const pawfectTokenString = localStorage.getItem("pawfect_token");
+    if (pawfectTokenString) {
+        const pawfectToken = JSON.parse(pawfectTokenString);
+    return fetchWithResponse("pets/favorites", {
+        headers: {
+            Authorization: `Token ${pawfectToken.token}`,
+          }
+    }).then((res) => res.json())
+    }
+}
