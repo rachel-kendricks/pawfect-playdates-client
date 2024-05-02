@@ -1,24 +1,30 @@
 import { useState, useEffect  } from "react"
-import { getAllPets } from "../services/petsService";
+import { getAllPets } from "../services/pets";
+import { PetCard } from "../components/PetCard";
+import { Link } from "react-router-dom"
+
 
 
 export const PetsList = () => {
     const [allPets, setAllPets] = useState([]);
 
     useEffect(() => {
-        getAllPets().then((pets) => {
+          getAllPets().then((pets) => {
             setAllPets(pets);
-        })
-    }, [])
+          });
+        }, []);
 
     return (
         <section>
             <div className="header">
-                <h1>PetsList</h1>
+                <h1>Pets List</h1>
             </div>
             <div className="content">
                 {allPets.map((pet) => (
-                    <div key={pet.id}>{pet.name}</div>
+                    // <div key={pet.id}>{pet.name}</div>
+                    <div key={pet.id}>
+                    <PetCard pet={pet} key={pet.id}/>
+                     </div>
                 ))}
             </div>
         </section>
