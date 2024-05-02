@@ -110,3 +110,16 @@ export const getUserFavorites = () => {
     }).then((res) => res.json())
     }
 }
+
+//Get a user's pet profiles
+export const getUsersPetProfiles = () => {
+    const pawfectTokenString = localStorage.getItem("pawfect_token");
+    if (pawfectTokenString) {
+        const pawfectToken = JSON.parse(pawfectTokenString);
+    return fetchWithResponse("pets/user_pets", {
+        headers: {
+            Authorization: `Token ${pawfectToken.token}`,
+          }
+    }).then((res) => res.json())
+    }
+}
