@@ -39,7 +39,7 @@ useEffect(() => {
             <h1>Pet Details</h1>
         </div>
         <div className="content">
-            {pet.user?.id === user ? <PetDetailsCard pet={pet} petId={petId}/> : <PetDetailsCard_noEdit pet={pet} petId={petId} userFavorites={userFavorites}/> }
+            {pet.user?.id === user ? <PetDetailsCard pet={pet} petId={petId} userFavorites={userFavorites}/> : <PetDetailsCard_noEdit pet={pet} petId={petId} userFavorites={userFavorites}/> }
             
         </div>
        </section>

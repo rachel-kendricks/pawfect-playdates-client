@@ -1,16 +1,44 @@
 import { Link, useNavigate } from "react-router-dom"
 import { deletePet } from "../services/pets"
+import { favoritePet, unFavoritePet } from "../services/favorite"
+import { useEffect, useState } from "react"
 
 
-export const PetDetailsCard = ({ pet, petId }) => {
+export const PetDetailsCard = ({ pet, petId, userFavorites }) => {
     const navigate = useNavigate()
+    const [is_liked, set_is_liked] = useState(false)
+
+    useEffect(() => {
+        if (userFavorites.find((thePet) => thePet.id === pet.id)) {
+            set_is_liked(true)
+        }
+    }, [userFavorites, pet])
     
     const handleDelete = () => {
         deletePet(petId).then(navigate("/mypetprofiles"))
     }
 
+    const favorite = () => {
+        favoritePet(petId).then(set_is_liked(true))
+      }
+  
+      const unfavorite = () => {
+        unFavoritePet(petId).then(set_is_liked(false))
+      }
+
     return(
         <section>
+            <p>
+            {is_liked == true ? (
+            <button onClick={unfavorite}>
+            <i className="fa-solid fa-star"></i>
+            </button>
+            ) : (
+            <button onClick={favorite}>
+                <i className="fa-regular fa-star"></i>
+            </button>
+            )}
+            </p>
             <h1>{pet.name}</h1>
             <ul>
                 <li>Size: {pet.size?.name}</li>

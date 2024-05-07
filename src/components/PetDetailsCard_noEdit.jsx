@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { favoritePet, unFavoritePet } from "../services/favorite"
 
 
 export const PetDetailsCard_noEdit = ({ pet, petId, userFavorites }) => {
@@ -9,12 +10,26 @@ export const PetDetailsCard_noEdit = ({ pet, petId, userFavorites }) => {
             set_is_liked(true)
         }
     }, [userFavorites, pet])
+
+    const favorite = () => {
+        favoritePet(pet.id).then(set_is_liked(true))
+      }
+  
+      const unfavorite = () => {
+        unFavoritePet(pet.id).then(set_is_liked(false))
+      }
+
     return(
         <section>
             <p>
-            {is_liked == true ? (<i className="fa-solid fa-star"></i>
+            {is_liked == true ? (
+            <button onClick={unfavorite}>
+            <i className="fa-solid fa-star"></i>
+            </button>
             ) : (
+            <button onClick={favorite}>
                 <i className="fa-regular fa-star"></i>
+            </button>
             )}
             </p>
             <h1>{pet.name}</h1>

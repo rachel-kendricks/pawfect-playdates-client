@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getUsersPetProfiles } from "../services/pets";
+import { getUserFavorites, getUsersPetProfiles } from "../services/pets";
 import { PetCard } from "../components/PetCard";
 
 
 
 export const MyPetProfiles = () => {
     const [usersPetProfiles, setUsersPetProfiles] = useState([])
+    const [userFavorites, setUserFavorites] = useState([])
+
+    useEffect(() => {
+        getUserFavorites().then((favs) => {
+            setUserFavorites(favs)
+        })
+    }, [])
 
     useEffect(() => {
         getUsersPetProfiles().then((pets) => {
@@ -25,7 +32,7 @@ export const MyPetProfiles = () => {
             {usersPetProfiles.map((pet) => (
                    <div key={pet.id}>
                     <Link to={`/pets/${pet.id}`}>
-                        <PetCard pet={pet} key={pet.id}/>
+                        <PetCard pet={pet} key={pet.id} userFavorites={userFavorites}/>
                     </Link>
                      </div>
                 ))}

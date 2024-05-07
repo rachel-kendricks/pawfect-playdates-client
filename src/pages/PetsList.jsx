@@ -16,14 +16,13 @@ export const PetsList = () => {
         })
     }, [])
 
-   
-
     useEffect(() => {
           getAllPets().then((pets) => {
             setAllPets(pets);
           });
         }, []);
 
+  
     return (
         <section>
             <div className="header">

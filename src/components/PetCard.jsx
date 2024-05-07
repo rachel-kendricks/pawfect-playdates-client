@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react"
 import "./PetCard.css"
 import { getUserFavorites } from "../services/pets"
+import { favoritePet, unFavoritePet } from "../services/favorite"
 
+// eslint-disable-next-line react/prop-types
 export const PetCard = ({ pet, userFavorites }) => {
     const [is_liked, set_is_liked] = useState(false)
 
     useEffect(() => {
+        // eslint-disable-next-line react/prop-types
         if (userFavorites.find((thePet) => thePet.id === pet.id)) {
             set_is_liked(true)
         }
@@ -14,7 +17,8 @@ export const PetCard = ({ pet, userFavorites }) => {
     return (
     <div className="pet-card" key={pet.id}>
         <p>
-        {is_liked == true ? (<i className="fa-solid fa-star"></i>
+        {is_liked == true ? (
+          <i className="fa-solid fa-star"></i>
         ) : (
             <i className="fa-regular fa-star"></i>
         )}

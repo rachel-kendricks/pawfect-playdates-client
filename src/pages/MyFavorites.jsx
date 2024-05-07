@@ -22,7 +22,7 @@ export const MyFavorites = () => {
                 {userFavorites.map((pet) => (
                    <div key={pet.id}>
                     <Link to={`/pets/${pet.id}`}>
-                        <PetCard pet={pet} key={pet.id}/>
+                        <PetCard pet={pet} key={pet.id} userFavorites={userFavorites}/>
                     </Link>
                      </div>
                 ))}
