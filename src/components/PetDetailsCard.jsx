@@ -40,6 +40,7 @@ export const PetDetailsCard = ({ pet, petId, userFavorites }) => {
             )}
             </p>
             <h1>{pet.name}</h1>
+            <img src={pet.img} alt="funny dog"></img>
             <ul>
                 <li>Size: {pet.size?.name}</li>
                 <li>Play Style: {pet.play_style?.name}</li>

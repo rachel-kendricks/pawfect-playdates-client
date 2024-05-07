@@ -10,7 +10,8 @@ export const EditPetDetails = () => {
   const [bio, setBio] = useState("");
   const [sizes, setSizes] = useState([]);
   const [playStyles, setPlayStyles] = useState([]);
-  const { petId } = useParams({})
+  const [img, setImg] = useState("");
+  const { petId } = useParams({});
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -20,6 +21,7 @@ export const EditPetDetails = () => {
         setBio(pet.bio)
         setSize(pet.size.id)
         setPlayStyle(pet.play_style.id)
+        setImg(pet.img)
     });
 }, [petId])
   
@@ -43,7 +45,8 @@ export const EditPetDetails = () => {
         "breed": breed,
         "size_id": parseInt(size),
         "play_style_id": parseInt(playStyle),
-        "bio": bio
+        "bio": bio,
+        "img": img,
     }).then(navigate("/mypetprofiles"))
   }
 
@@ -54,6 +57,12 @@ export const EditPetDetails = () => {
         placeholder="Enter Pet Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
+      />
+      <input
+      type="text"
+      placeholder="Enter Image URL"
+      value={img}
+      onChange={(e) => setImg(e.target.value)}
       />
       <input
         type="text"

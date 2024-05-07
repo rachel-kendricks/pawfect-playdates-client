@@ -3,12 +3,10 @@ import "./PetCard.css"
 import { getUserFavorites } from "../services/pets"
 import { favoritePet, unFavoritePet } from "../services/favorite"
 
-// eslint-disable-next-line react/prop-types
 export const PetCard = ({ pet, userFavorites }) => {
     const [is_liked, set_is_liked] = useState(false)
 
     useEffect(() => {
-        // eslint-disable-next-line react/prop-types
         if (userFavorites.find((thePet) => thePet.id === pet.id)) {
             set_is_liked(true)
         }
@@ -24,6 +22,7 @@ export const PetCard = ({ pet, userFavorites }) => {
         )}
         </p>
         <h4>{pet.name}</h4>
+        <img src={pet.img} alt="funny dog"></img>
         <p>Size: {pet.size.name}</p>
         <p>Play Style: {pet.play_style.name}</p>
         <p>Breed: {pet.breed}</p>
