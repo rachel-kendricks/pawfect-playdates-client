@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { getSinglePet } from "../services/pets"
+import { getSinglePet, getUserFavorites } from "../services/pets"
 import { PetDetailsCard } from "../components/PetDetailsCard"
 import { PetDetailsCard_noEdit } from "../components/PetDetailsCard_noEdit"
 
@@ -10,6 +10,14 @@ export const PetDetails = () => {
     const { petId } = useParams({})
     const [pet, setPet] = useState({})
     const [user, setUser] = useState("")
+    const [userFavorites, setUserFavorites] = useState([])
+    
+
+    useEffect(() => {
+        getUserFavorites().then((favs) => {
+            setUserFavorites(favs)
+        })
+    }, [])
 
     useEffect(() => {
         getSinglePet(petId).then((pet) => {
@@ -31,7 +39,7 @@ useEffect(() => {
             <h1>Pet Details</h1>
         </div>
         <div className="content">
-            {pet.user?.id === user ? <PetDetailsCard pet={pet} petId={petId}/> : <PetDetailsCard_noEdit pet={pet} petId={petId}/> }
+            {pet.user?.id === user ? <PetDetailsCard pet={pet} petId={petId}/> : <PetDetailsCard_noEdit pet={pet} petId={petId} userFavorites={userFavorites}/> }
             
         </div>
        </section>

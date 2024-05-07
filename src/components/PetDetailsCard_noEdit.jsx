@@ -1,8 +1,22 @@
+import { useEffect, useState } from "react"
 
 
-export const PetDetailsCard_noEdit = ({ pet, petId }) => {
+export const PetDetailsCard_noEdit = ({ pet, petId, userFavorites }) => {
+    const [is_liked, set_is_liked] = useState(false)
+
+    useEffect(() => {
+        if (userFavorites.find((thePet) => thePet.id === pet.id)) {
+            set_is_liked(true)
+        }
+    }, [userFavorites, pet])
     return(
         <section>
+            <p>
+            {is_liked == true ? (<i className="fa-solid fa-star"></i>
+            ) : (
+                <i className="fa-regular fa-star"></i>
+            )}
+            </p>
             <h1>{pet.name}</h1>
             <ul>
                 <li>Size: {pet.size?.name}</li>
