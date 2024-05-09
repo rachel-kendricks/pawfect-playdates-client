@@ -21,7 +21,7 @@ export const MyPetProfiles = () => {
   }, []);
 
   return (
-    <section>
+    <section className="has-text-centered">
       <div className="header">
         <h1 className="has-text-centered title is-1 mb-6">My Pet Profiles</h1>
       </div>

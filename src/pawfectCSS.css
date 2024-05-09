@@ -1,10 +1,13 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css";
 
 img {
-    object-fit: contain; 
+    object-fit: cover; 
+    height: auto;
+    width: 200px;
 }
 
 .pet-detail-img {
-    max-height: 500px !important;
+    max-height: 700px !important;
     margin-top: 2em;
+    object-fit: contain !important;
 }

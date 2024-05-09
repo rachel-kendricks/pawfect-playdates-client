@@ -50,7 +50,7 @@ export const PetDetailsCard = ({ pet, petId, userFavorites }) => {
           )}
         </p> */}
       </div>
-      <div className="card-image">
+      <div className="card-image is-centered has-text-centered">
         <figure className="image">
           <img className="pet-detail-img" src={pet.img} alt="funny dog"></img>
         </figure>

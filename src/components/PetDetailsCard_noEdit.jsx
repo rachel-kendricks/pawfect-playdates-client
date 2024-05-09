@@ -45,7 +45,7 @@ export const PetDetailsCard_noEdit = ({ pet, petId, userFavorites }) => {
       </div>
       <div className="card-image">
         <figure className="image">
-          <img className="pet-detail-img" src={pet.img} alt="funny dog"></img>
+          <img className="pet-detail-img mt-2" src={pet.img} alt="funny dog"></img>
         </figure>
       </div>
       <div className="card-content">
