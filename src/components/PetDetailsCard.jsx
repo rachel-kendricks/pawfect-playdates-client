@@ -32,7 +32,7 @@ export const PetDetailsCard = ({ pet, petId, userFavorites }) => {
         <h1 className="has-text-centered title is-1 mt-2 ml-5 is-flex is-align-content-center">
           {pet.name}
         </h1>
-        {/* <p className="is-flex mr-5">
+        <p className="is-flex mr-5">
           {is_liked == true ? (
             <button onClick={unfavorite}>
               <i
@@ -48,7 +48,7 @@ export const PetDetailsCard = ({ pet, petId, userFavorites }) => {
               ></i>
             </button>
           )}
-        </p> */}
+        </p>
       </div>
       <div className="card-image is-centered has-text-centered">
         <figure className="image">

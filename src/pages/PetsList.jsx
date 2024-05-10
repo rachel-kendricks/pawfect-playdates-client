@@ -22,7 +22,7 @@ export const PetsList = () => {
   return (
     <section>
       <div className="header">
-        <h1 className="has-text-centered title is-1 mb-6">Pets</h1>
+        <h1 className="has-text-centered title is-1 mb-6">Pawfect Playdates</h1>
       </div>
       <div className="content columns is-multiline">
         {allPets.map((pet) => (
